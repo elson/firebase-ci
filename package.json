@@ -22,9 +22,10 @@
     "build:lib": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
     "build": "npm run clean:app && npm run build:lib",
     "watch": "npm run build:lib -- --stats --progress --colors --watch",
-    "prepare": "npm run clean:app && npm run build",
+    "prepare": "npm run snyk-protect && npm run clean:app && npm run build",
     "pre-push": "npm run lint",
-    "codecov": "cat coverage/lcov.info | codecov"
+    "codecov": "cat coverage/lcov.info | codecov",
+    "snyk-protect": "snyk protect"
   },
   "repository": {
     "type": "git",
@@ -68,7 +69,8 @@
     "command-exists": "^1.2.8",
     "commander": "^2.15.1",
     "figures": "^3.0.0",
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.11",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
@@ -101,5 +103,6 @@
     "rimraf": "^2.6.2",
     "sinon": "^7.3.2",
     "sinon-chai": "^3.3.0"
-  }
+  },
+  "snyk": true
 }
